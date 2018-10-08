@@ -18,6 +18,7 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
 </head>
 <body>
     <div id="app">
@@ -33,7 +34,19 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
-
+                        @admin
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle{{ currentRoute(route('category.create'))}}" href="#" id="navbarDropdownGestCat" role="button" data-toggle="dropdown"
+                               aria-haspopup="true" aria-expanded="false">
+                                @lang('Administration')
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdownGestCat">
+                                <a class="dropdown-item" href="{{ route('category.create') }}">
+                                    <i class="fas fa-plus fa-lg"></i> @lang('Ajouter une catégorie')
+                                </a>
+                            </div>
+                        </li>
+                        @endadmin
                     </ul>
 
                     <!-- Right Side Of Navbar -->
@@ -73,6 +86,17 @@
         </nav>
 
         <main class="py-4">
+            @if (session('ok'))
+                <div class="container">
+                    <div class="alert alert-dismissible alert-success fade show" role="alert">
+                        {{ session('ok') }}
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                </div>
+            @endif
+
             @yield('content')
         </main>
     </div>
