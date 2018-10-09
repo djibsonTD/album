@@ -9,16 +9,15 @@
 
     <title>{{ config('app.name', 'Album') }}</title>
 
-    <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
-
     <!-- Fonts -->
     <link rel="dns-prefetch" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet" type="text/css">
 
+
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+
 </head>
 <body>
     <div id="app">
@@ -43,6 +42,9 @@
                             <div class="dropdown-menu" aria-labelledby="navbarDropdownGestCat">
                                 <a class="dropdown-item" href="{{ route('category.create') }}">
                                     <i class="fas fa-plus fa-lg"></i> @lang('Ajouter une catégorie')
+                                </a>
+                                <a class="dropdown-item" href="{{ route('category.index') }}">
+                                    <i class="fas fa-wrench fa-lg"></i> @lang('Gérer les catégories')
                                 </a>
                             </div>
                         </li>
@@ -100,5 +102,12 @@
             @yield('content')
         </main>
     </div>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="{{ asset('js/app.js') }}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@7.28.4/dist/sweetalert2.all.min.js"></script>
+
+    @yield('script')
+
 </body>
 </html>

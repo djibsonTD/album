@@ -26,6 +26,7 @@ Route::group(['middleware'=>'verified'], function(){
         Route::resource ('category', 'CategoryController', [
             'except' => 'show'
         ]);
+
     });
 
 });
