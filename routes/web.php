@@ -21,12 +21,18 @@ Route::group(['middleware'=>'verified'], function(){
 
     Route::get('/home', 'HomeController@index')->name('home');
 
-    Route::middleware('admin')->group(function () {
+    Route::resource ('image', 'ImageController', [
+        'only' => ['create', 'store', 'destroy', 'update']
+    ]);
+
+
+    Route::middleware ('admin')->group (function () {
 
         Route::resource ('category', 'CategoryController', [
             'except' => 'show'
         ]);
-
     });
 
 });
+
+

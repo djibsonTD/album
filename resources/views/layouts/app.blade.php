@@ -18,6 +18,11 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
 
+    <style>
+        .custom-file-label::after {
+            content: "Parcourir";
+        }
+    </style>
 </head>
 <body>
     <div id="app">
@@ -49,6 +54,20 @@
                             </div>
                         </li>
                         @endadmin
+                        @auth
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle{{ currentRoute(route('image.create'))}}"
+                                   href="#" id="navbarDropdownGestAlbum" role="button" data-toggle="dropdown"
+                                   aria-haspopup="true" aria-expanded="false">
+                                    @lang('Gestion')
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdownGestAlbum">
+                                    <a class="dropdown-item" href="{{ route('image.create') }}">
+                                        <i class="fas fa-images fa-lg"></i> @lang('Ajouter une image')
+                                    </a>
+                                </div>
+                            </li>
+                        @endauth
                     </ul>
 
                     <!-- Right Side Of Navbar -->
